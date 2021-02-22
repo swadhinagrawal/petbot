@@ -67,11 +67,11 @@ def region_of_interest(canny):
     return masked_image
 
 def gstreamer_pipeline(
-    capture_width=1280,
-    capture_height=720,
-    display_width=1280,
-    display_height=720,
-    framerate=60,
+    capture_width=640,
+    capture_height=480,
+    display_width=640,
+    display_height=480,
+    framerate=15,
     flip_method=0,
 ):
     return (
@@ -116,20 +116,20 @@ car.steering = 0.5
 i = 0
 print("press keys")
 while True:
-    '''while True:
+    while True:
         ret_val,image = cap.read()
     #   cv2.imshow("CSI Camera", image)
         cv2.imwrite(path+'/'+str(i)+'.jpeg',image)
-        i+=1'''
+        i+=1
     
     if keyboard.is_pressed("w"):
-        car.throttle = 1.0
+        car.throttle += 0.3
     elif keyboard.is_pressed("s"):
-        car.throttle = -1.0
+        car.throttle += -0.3
     elif keyboard.is_pressed("d"):
-        car.steering = 1.0
+        car.steering += 0.3
     elif keyboard.is_pressed("a"):
-        car.steering = -1.0
+        car.steering += -0.3
     elif keyboard.is_pressed("z"):
         car.throttle = 0.0
     elif keyboard.is_pressed("q"):
